@@ -1,12 +1,22 @@
-import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Layout from './components/Layout'
+import Home from './pages/Home'
+import Movie from './pages/Movie'
+import Watchlist from './pages/Watchlist'
+import Starred from './pages/Starred'
 
-const App = () => {
+function App() {
   return (
-    <div className="flex justify-center items-center h-screen ">
-      <div className="text-4xl text-center">
-        <p>Vite + React + Tailwind CSS 🚀</p>
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="movies/:id" element={<Movie />} />
+          <Route path="watchlist" element={<Watchlist />} />
+          <Route path="starred" element={<Starred />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
